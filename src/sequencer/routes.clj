@@ -47,7 +47,8 @@
                                             (c/log)
                                             (response/redirect "/login")))
 
-           (GET "/login" {session :session} (response-with-session (t/login-page (get session :message)) (dissoc session :message)))
+           (GET "/login" {session :session}
+             (response-with-session (t/login-page (get session :message)) (dissoc session :message)))
            (GET "/logout" []
              (redirect-with-session "/" {}))
 

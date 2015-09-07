@@ -18,7 +18,7 @@
 (defn log-panel
   [{^ObjectId id :_id name :name username :username}]
   [:div.well
-   "User"
+   "User "
    (hiccup.core/h username)
    " set a task - "
    (hiccup.core/h name)

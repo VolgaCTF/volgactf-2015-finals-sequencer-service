@@ -12,7 +12,7 @@
                    (slurp file)
                    (parser/parse-strings)
                    (parser/execute-task))
-                 (catch Exception e {:error (.getMessage e)}))]
+                 (catch Exception e {:error (str (.getMessage e) " Illegal file format!") }))]
     (if (not (contains? res :error))
       (->
         (assoc res :username username)

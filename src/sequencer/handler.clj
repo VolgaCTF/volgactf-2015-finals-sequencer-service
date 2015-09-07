@@ -10,8 +10,7 @@
 (def sequencer-defaults
   (-> site-defaults
       (assoc-in  [:session] false)
-      (assoc-in [:security :anti-forgery] false)
-      ))
+      (assoc-in [:security :anti-forgery] false)))
 
 
 
@@ -21,4 +20,4 @@
 (defn -main
   "Start the server"
   [& args]
-  (immutant/run #'app {:host "localhost" :port 8080 :path "/"}))
+  (immutant/run #'app {:host "0.0.0.0" :port 8080 :path "/"}))
