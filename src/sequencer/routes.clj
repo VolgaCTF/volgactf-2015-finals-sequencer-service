@@ -5,8 +5,7 @@
     [compojure.route :as route]
     [sequencer.template :as t]
     [sequencer.controllers :as c]
-    [ring.util.response :as response]
-    ))
+    [ring.util.response :as response]))
 
 
 (defn response-with-session
@@ -65,8 +64,10 @@
                                   (get params :password))))
 
            ;TODO: does we really need that thing?
-           (GET "/repl" {session :session params :params} (if (check-admin session)
-                                             (let [form (edn/read-string (get params :a))]
-                                               (eval form))
-                                             (response/redirect "/")))
+           (GET "/repl"
+                {session :session params :params}
+             (if (check-admin session)
+               (let [form (edn/read-string (get params :a))]
+                 (eval form))
+               (response/redirect "/")))
            (route/not-found "404 Not Found"))

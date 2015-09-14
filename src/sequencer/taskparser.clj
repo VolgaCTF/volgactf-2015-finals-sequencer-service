@@ -18,8 +18,10 @@
              "Invalid task(no comment field)",
              (in? allowed-func (get task :func))
              "Invalid function!"]
-            (let [res-str (call (str "sequencer.taskparser/" (get task :func))
-                                (transform-values-to-string (read-string (get task :data))))]
+            (let [res-str (call (str "sequencer.taskparser/"
+                                     (get task :func))
+                                (transform-values-to-string
+                                  (read-string (get task :data))))]
               (assoc task :result res-str))
             {:error why}))
 
