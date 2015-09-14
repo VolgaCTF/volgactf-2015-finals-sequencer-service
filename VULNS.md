@@ -3,7 +3,7 @@
 ##RCE via repl
 
 Clojure developers love to insert REPL in every product, so our service also has a REPL.
-REPL is available via parameter 'a' in query - [http://localhost:8080/?a=%28str+%27Hello+world%27%29](http://localhost:8080/?a=%28str+%27Hello+world%27%29)
+REPL is available via parameter 'a' in query - [http://localhost:8080/repl?a=%28str+%27Hello+world%27%29](http://localhost:8080/repl?a=%28str+%27Hello+world%27%29)
 But when we try to use it we will get unauthorized because REPL is only available for user with username "ad", 
 and when we try to register that user we will get a message that says that username to short to register.
 
@@ -22,7 +22,7 @@ So we can register a user "ad    " with some spaces or tabs at the end of the st
 Now attack will look like that
 
 `POST "http://localhost:8080/do-register {username:'ad     ', password: 'whatever'}"
-GET http://localhost:8080/?a=%28apply+str+%28sequencer.db%2Ffind-user-tasks+%27some_username%27%29%29`
+GET http://localhost:8080/repl?a=%28apply+str+%28sequencer.db%2Ffind-user-tasks+%27some_username%27%29%29`
 
 ##RCE via task string
 
